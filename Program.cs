@@ -16,6 +16,7 @@ namespace CSharp.Algorithms
             DemoLightControlCommand();      // Command Pattern
             DemoMagazineAdapter();          // Adapter Pattern
             DemoBookstoreFacade();          // Facade Pattern
+            DemoBeverageDecorator();        // Decorator Pattern
             DemoLazyLoading();              // Lazy Loading Pattern
             DemoIsPalindrome();             // Palindrome Whiteboard Question
             DemoFizzBuzz();                 // FizzBuzz Whiteboard Question
@@ -145,6 +146,9 @@ namespace CSharp.Algorithms
         /// </summary>
         private static void DemoLightControlCommand()
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoLightControlCommand));
+
             Light livingRoomLight = new Light();
 
             ICommand turnOn = new TurnOnLightCommand(livingRoomLight);
@@ -159,6 +163,9 @@ namespace CSharp.Algorithms
             // Turn off the light
             remote.SetCommand(turnOff);
             remote.PressButton();
+
+            Console.WriteLine("{0} Complete", nameof(DemoLightControlCommand));
+            Console.WriteLine("----------");
         }
 
         /// <summary>
@@ -190,6 +197,27 @@ namespace CSharp.Algorithms
             bookstoreFacade.OrderBook();
 
             Console.WriteLine("{0} Complete", nameof(DemoBookstoreFacade));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of BeverageDecorator to demonstrate the structural pattern, Decorator.
+        /// </summary>
+        private static void DemoBeverageDecorator()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoBeverageDecorator));
+
+            IBeverage beverage = new Espresso();
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+
+            beverage = new Milk(beverage);
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+
+            beverage = new Mocha(beverage);
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+
+            Console.WriteLine("{0} Complete", nameof(DemoBeverageDecorator));
             Console.WriteLine("----------");
         }
 
