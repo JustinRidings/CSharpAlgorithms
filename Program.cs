@@ -15,6 +15,7 @@ namespace CSharp.Algorithms
             DemoBurgerCookingStrategy();    // Strategy Pattern
             DemoLightControlCommand();      // Command Pattern
             DemoMagazineAdapter();          // Adapter Pattern
+            DemoComposite();                // Composite Pattern
             DemoBookstoreFacade();          // Facade Pattern
             DemoBeverageDecorator();        // Decorator Pattern
             DemoLazyLoading();              // Lazy Loading Pattern
@@ -175,12 +176,35 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoMagazineAdapter));
+
             Book book = new Book();
             book.Read();
 
             Magazine magazine = new Magazine();
             Book magazineAdapter = new MagazineAdapter(magazine);
             magazineAdapter.Read();
+
+            Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of ComponentComposite to demonstrate the Structural Pattern, Composite.
+        /// </summary>
+        private static void DemoComposite()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoComposite));
+
+            Composite root = new Composite("Root");
+            root.Add(new Leaf("Leaf A"));
+            Composite composite = new Composite("Composite X");
+            composite.Add(new Leaf("Leaf XA"));
+            composite.Add(new Leaf("Leaf XB"));
+            root.Add(composite);
+            root.Add(new Leaf("Leaf B"));
+            root.Display(1);
+
             Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
             Console.WriteLine("----------");
         }

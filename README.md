@@ -14,7 +14,7 @@ OR use CommandLine
 
 ### Project Layout
 
-The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patterns) directory contains sub-directories for the different types of design patterns that exist, alogn with implementations. The [WhiteboardSolutions.cs](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/WhiteboardSolutions.cs) file contains static implementations for various whiteboarding questions. You can Demo each pattern or whiteboard solution by running the [Program](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Program.cs) to see the output.
+The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patterns) directory contains sub-directories for the different types of design patterns that exist, align with implementations. The [WhiteboardSolutions.cs](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/WhiteboardSolutions.cs) file contains static implementations for various whiteboarding questions. You can Demo each pattern or whiteboard solution by running the [Program](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Program.cs) to see the output.
 
 ### Behavioral Patterns
 
@@ -34,3 +34,5 @@ The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patte
 
 1. [Facade](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BookstoreFacade.cs)
 2. [Adapter](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/MagazineAdapter.cs)
+3. [Decorator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BeverageDecorator.cs)
+4. [Composite](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/ComponentComposite.cs)
