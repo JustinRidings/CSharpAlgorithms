@@ -14,11 +14,13 @@ namespace CSharp.Algorithms
             DemoBurgerMenuIterator();       // Iterator Pattern
             DemoBurgerCookingStrategy();    // Strategy Pattern
             DemoLightControlCommand();      // Command Pattern
+            DemoVendingMachineState();      // State Pattern
             DemoMagazineAdapter();          // Adapter Pattern
             DemoComposite();                // Composite Pattern
             DemoBookstoreFacade();          // Facade Pattern
             DemoBeverageDecorator();        // Decorator Pattern
             DemoLazyLoading();              // Lazy Loading Pattern
+            DemoCharacterPrototype();       // Prototype Pattern
             DemoIsPalindrome();             // Palindrome Whiteboard Question
             DemoFizzBuzz();                 // FizzBuzz Whiteboard Question
             DemoReverseString();            // Reverse String Whiteboard Question
@@ -66,12 +68,36 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoCarSingleton));
+
             CarSingleton singleton = CarSingleton.Instance;
             Car car1 = singleton.CreateCar("Toyota", "Corolla", "Black");
             Car car2 = singleton.CreateCar("Ford", "Mustang", "Orange");
 
             DisplayCarInfo(car1, car2);
+
             Console.WriteLine("{0} Complete", nameof(DemoCarSingleton));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of CharacterPrototype to demonstrate the creational pattern, Prototype.
+        /// </summary>
+        private static void DemoCharacterPrototype()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoCharacterPrototype));
+
+            GameCharacter originalCharacter = new GameCharacter("Hero", 100, 50, new List<string> { "Sword", "Shield" });
+            Console.WriteLine("Original Character: " + originalCharacter);
+
+            GameCharacter clonedCharacter = (GameCharacter)originalCharacter.Clone();
+            Console.WriteLine("Cloned Character: " + clonedCharacter);
+
+            clonedCharacter.Name = "Villain";
+            clonedCharacter.Health = 80;
+            clonedCharacter.Inventory.Add("Potion");
+
+            Console.WriteLine("{0} Complete", nameof(DemoCharacterPrototype));
             Console.WriteLine("----------");
         }
 
@@ -82,6 +108,7 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoBurgerObserver));
+
             BurgerObserver burger = new();
 
             Customer customer = new Customer("Alice");
@@ -93,6 +120,7 @@ namespace CSharp.Algorithms
             burger.Status = BurgerStatus.Cooking;
             burger.Status = BurgerStatus.Ready;
             burger.Status = BurgerStatus.Delivered;
+
             Console.WriteLine("{0} Complete", nameof(DemoBurgerObserver));
             Console.WriteLine("----------");
         }
@@ -104,6 +132,7 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoBurgerMenuIterator));
+
             BurgerMenu menu = new BurgerMenu();
             menu.AddItem("Cheeseburger");
             menu.AddItem("Veggie Burger");
@@ -127,6 +156,7 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoBurgerCookingStrategy));
+
             Burger burger = new Burger();
 
             burger.SetCookingStrategy(new GrillStrategy());

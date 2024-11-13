@@ -52,6 +52,9 @@ The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patte
 - [LazyLoading](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/OrderLazy.cs)
   - **Summary**: Delays the initialization of an object until it is actually needed, which can improve performance and reduce memory usage.
   - **When to use**: When you want to defer the initialization of an object until it's really needed to save resources.
+- [Prototype](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/GameCharacterPrototype.cs)
+  - **Summary**: Allows you to copy existing objects without making your code dependent on their classes.
+  - **When to use**: When creating new instances of a class is expensive or complicated, or when you want to replicate an object configuration with minor changes.
 
 ### Structural Patterns
 
