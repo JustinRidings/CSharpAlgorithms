@@ -170,6 +170,27 @@ namespace CSharp.Algorithms
         }
 
         /// <summary>
+        /// Demonstrates the implementation of VendingMachineState to demonstrate the behavioral pattern, State.
+        /// </summary>
+        private static void DemoVendingMachineState()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoVendingMachineState));
+
+            VendingMachine machine = new VendingMachine(new NoCoinInsertedState());
+
+            machine.InsertCoin();
+            machine.SelectProduct();
+            machine.DispenseProduct();
+
+            machine.InsertCoin();
+            machine.SelectProduct();
+
+            Console.WriteLine("{0} Complete", nameof(DemoVendingMachineState));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
         /// Demonstrates the implementation of MagazineAdapter to demonstrate the structural pattern, Adapter.
         /// </summary>
         private static void DemoMagazineAdapter()
