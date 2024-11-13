@@ -1,4 +1,4 @@
-# CSharpAlgorithms
+# C# Algorithms
 A collection of Design Patterns and Algorithms, implemented in C#.
 
 ### Prereqs
