@@ -7,20 +7,28 @@ namespace CSharp.Algorithms
     {
         static void Main(string[] args)
         {
+            // Creational
             DemoCarFactory();               // Factory Pattern
             DemoCarBuilder();               // Builder Pattern
             DemoCarSingleton();             // Singleton Pattern
+            DemoLazyLoading();              // Lazy Loading Pattern
+            DemoCharacterPrototype();       // Prototype Pattern
+
+            // Behavioral
             DemoBurgerObserver();           // Observer Pattern
             DemoBurgerMenuIterator();       // Iterator Pattern
             DemoBurgerCookingStrategy();    // Strategy Pattern
             DemoLightControlCommand();      // Command Pattern
             DemoVendingMachineState();      // State Pattern
+            DemoChatMediator();             // Mediator Pattern
+
+            // Structural
             DemoMagazineAdapter();          // Adapter Pattern
             DemoComposite();                // Composite Pattern
             DemoBookstoreFacade();          // Facade Pattern
             DemoBeverageDecorator();        // Decorator Pattern
-            DemoLazyLoading();              // Lazy Loading Pattern
-            DemoCharacterPrototype();       // Prototype Pattern
+
+            // Whiteboard Solutions
             DemoIsPalindrome();             // Palindrome Whiteboard Question
             DemoFizzBuzz();                 // FizzBuzz Whiteboard Question
             DemoReverseString();            // Reverse String Whiteboard Question
@@ -29,6 +37,7 @@ namespace CSharp.Algorithms
             DemoCombineLists();             // Combine Linked Lists Whiteboard Question
         }
 
+        #region Creational Patterns
         /// <summary>
         /// Demonstrates the implementation of CarFactory to demonstrate the creational pattern, Factory.
         /// </summary>
@@ -100,7 +109,8 @@ namespace CSharp.Algorithms
             Console.WriteLine("{0} Complete", nameof(DemoCharacterPrototype));
             Console.WriteLine("----------");
         }
-
+        #endregion
+        #region Behavioral Patterns
         /// <summary>
         /// Demonstrates the implementation of BurgerObserver to demonstrate the behavioral pattern, Observer.
         /// </summary>
@@ -221,6 +231,32 @@ namespace CSharp.Algorithms
         }
 
         /// <summary>
+        /// Demonstrates the implementation of ChatMediator to demonstrate the behavioral pattern, Mediator.
+        /// </summary>
+        private static void DemoChatMediator()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoChatMediator));
+
+            IChatMediator chatMediator = new ChatMediator();
+
+            User user1 = new ConcreteUser(chatMediator, "Alice");
+            User user2 = new ConcreteUser(chatMediator, "Bob");
+            User user3 = new ConcreteUser(chatMediator, "Charlie");
+
+            chatMediator.AddUser(user1);
+            chatMediator.AddUser(user2);
+            chatMediator.AddUser(user3);
+
+            user1.Send("Hi everyone!");
+            user2.Send("Hello Alice!");
+
+            Console.WriteLine("{0} Complete", nameof(DemoChatMediator));
+            Console.WriteLine("----------");
+        }
+        #endregion
+        #region Structural Patterns
+        /// <summary>
         /// Demonstrates the implementation of MagazineAdapter to demonstrate the structural pattern, Adapter.
         /// </summary>
         private static void DemoMagazineAdapter()
@@ -240,7 +276,7 @@ namespace CSharp.Algorithms
         }
 
         /// <summary>
-        /// Demonstrates the implementation of ComponentComposite to demonstrate the Structural Pattern, Composite.
+        /// Demonstrates the implementation of ComponentComposite to demonstrate the structural pattern, Composite.
         /// </summary>
         private static void DemoComposite()
         {
@@ -295,7 +331,8 @@ namespace CSharp.Algorithms
             Console.WriteLine("{0} Complete", nameof(DemoBeverageDecorator));
             Console.WriteLine("----------");
         }
-
+        #endregion
+        #region Whiteboard Solutions
         /// <summary>
         /// Demonstrates the implementation of WhiteboardSolutions.IsPalindrome function, which demonstrates
         /// determining if a string is a Palindrome.
@@ -450,6 +487,6 @@ namespace CSharp.Algorithms
             car1.DisplayInfo();
             car2.DisplayInfo();
         }
+        #endregion
     }
-
 }

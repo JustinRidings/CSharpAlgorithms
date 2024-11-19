@@ -37,6 +37,9 @@ The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patte
 - [State](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/VendingMachineState.cs)
   - **Summary**: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
   - **When to use**: When an object's behavior depends on its state, and it needs to change behavior at runtime depending on its current state.
+- [Mediator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/ChatMediator.cs)
+  - **Summary**: Defines an object that encapsulates how a set of objects interact. This pattern promotes loose coupling by keeping objects from referring to each other explicitly and allows their interaction to be varied independently.
+  - **When to use**: When you need to reduce the complexity of communication between multiple objects and centralize the interaction logic.
 
 ### Creational Patterns
 
