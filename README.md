@@ -25,24 +25,88 @@ The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patte
 - [Iterator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/BurgerMenuIterator.cs)
   - **Summary**: Provides a way to access elements of a collection sequentially without exposing its underlying representation.
   - **When to use**: When you need to traverse a collection without exposing its internal structure.
+
+```mermaid
+graph TD
+A[Collection] -->|createIterator| B[Iterator]
+B -->|first| C[Element1]
+B -->|next| D[Element2]
+B -->|hasNext| E[Element3]
+B -->|currentItem| F[Element4]
+```
 - [Observer](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/BurgerObserver.cs)
   - **Summary**: Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
   - **When to use**: When changes to one object need to be propagated to multiple dependent objects automatically.
+
+ ```mermaid
+graph TD
+A[Subject] -->|registerObserver| B[Observer1]
+A -->|removeObserver| C[Observer2]
+A -->|notifyObservers| D[Observer3]
+B -->|update| E[Observer1State]
+C -->|update| F[Observer2State]
+D -->|update| G[Observer3State]
+```
+
 - [Strategy](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/CookingStrategy.cs)
   - **Summary**: Defines a family of algorithms, encapsulates each one, and makes them interchangeable. The strategy pattern lets the algorithm vary independently from the clients that use it.
   - **When to use**: When you have multiple algorithms for a specific task and want to switch between them dynamically.
+ 
+```mermaid
+graph TD
+A[Context] -->|setStrategy| B[StrategyInterface]
+B -->|executeStrategy| C[ConcreteStrategyA]
+B -->|executeStrategy| D[ConcreteStrategyB]
+A -->|performTask| E[Result]
+```
+
 - [Command](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/LightCommand.cs)
   - **Summary**: Encapsulates a request as an object, thereby allowing for parameterization of clients with queues, requests, and operations.
   - **When to use**: When you need to parameterize objects with operations, delay execution, or support undoable operations.
+ 
+```mermaid
+graph TD
+A[Invoker] -->|executeCommand| B[Command]
+B -->|execute| C[ConcreteCommand]
+C -->|execute| D[Receiver]
+D -->|action| E[Result]
+```
+
 - [State](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/VendingMachineState.cs)
   - **Summary**: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
   - **When to use**: When an object's behavior depends on its state, and it needs to change behavior at runtime depending on its current state.
+ 
+```mermaid
+graph TD
+A[Context] -->|setState| B[State]
+B -->|handleRequest| C[ConcreteStateA]
+B -->|handleRequest| D[ConcreteStateB]
+A -->|request| E[Result]
+```
+
 - [Mediator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/ChatMediator.cs)
   - **Summary**: Defines an object that encapsulates how a set of objects interact. This pattern promotes loose coupling by keeping objects from referring to each other explicitly and allows their interaction to be varied independently.
   - **When to use**: When you need to reduce the complexity of communication between multiple objects and centralize the interaction logic.
+ 
+```mermaid
+graph TD
+A[Mediator] -->|notify| B[Colleague1]
+A -->|notify| C[Colleague2]
+B -->|send| A
+C -->|send| A
+```
+
 - [Chain of Responsibility](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/SupportChainOfResponsibility.cs)
   - **Summary**: Allows a request to pass through a chain of handlers. Each handler either processes the request or passes it to the next handler in the chain.
   - **When to use**: When multiple objects can handle a request, and you want to avoid coupling the sender to a specific receiver.
+
+```mermaid
+graph TD
+A[Client] -->|sendRequest| B[Handler1]
+B -->|handleRequest| C[Handler2]
+C -->|handleRequest| D[Handler3]
+D -->|handleRequest| E[Result]
+```
 
 ### Creational Patterns
 
