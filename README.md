@@ -40,6 +40,9 @@ The [Patterns](https://github.com/JustinRidings/CSharpAlgorithms/tree/main/Patte
 - [Mediator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/ChatMediator.cs)
   - **Summary**: Defines an object that encapsulates how a set of objects interact. This pattern promotes loose coupling by keeping objects from referring to each other explicitly and allows their interaction to be varied independently.
   - **When to use**: When you need to reduce the complexity of communication between multiple objects and centralize the interaction logic.
+- [Chain of Responsibility](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/SupportChainOfResponsibility.cs)
+  - **Summary**: Allows a request to pass through a chain of handlers. Each handler either processes the request or passes it to the next handler in the chain.
+  - **When to use**: When multiple objects can handle a request, and you want to avoid coupling the sender to a specific receiver.
 
 ### Creational Patterns
 

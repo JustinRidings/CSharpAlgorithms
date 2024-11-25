@@ -8,33 +8,34 @@ namespace CSharp.Algorithms
         static void Main(string[] args)
         {
             // Creational
-            DemoCarFactory();               // Factory Pattern
-            DemoCarBuilder();               // Builder Pattern
-            DemoCarSingleton();             // Singleton Pattern
-            DemoLazyLoading();              // Lazy Loading Pattern
-            DemoCharacterPrototype();       // Prototype Pattern
+            DemoCarFactory();                   // Factory Pattern
+            DemoCarBuilder();                   // Builder Pattern
+            DemoCarSingleton();                 // Singleton Pattern
+            DemoLazyLoading();                  // Lazy Loading Pattern
+            DemoCharacterPrototype();           // Prototype Pattern
 
             // Behavioral
-            DemoBurgerObserver();           // Observer Pattern
-            DemoBurgerMenuIterator();       // Iterator Pattern
-            DemoBurgerCookingStrategy();    // Strategy Pattern
-            DemoLightControlCommand();      // Command Pattern
-            DemoVendingMachineState();      // State Pattern
-            DemoChatMediator();             // Mediator Pattern
+            DemoBurgerObserver();               // Observer Pattern
+            DemoBurgerMenuIterator();           // Iterator Pattern
+            DemoBurgerCookingStrategy();        // Strategy Pattern
+            DemoLightControlCommand();          // Command Pattern
+            DemoVendingMachineState();          // State Pattern
+            DemoChatMediator();                 // Mediator Pattern
+            DemoSupportChainOfResponsibility(); // Chain of Responsibility Pattern
 
             // Structural
-            DemoMagazineAdapter();          // Adapter Pattern
-            DemoComposite();                // Composite Pattern
-            DemoBookstoreFacade();          // Facade Pattern
-            DemoBeverageDecorator();        // Decorator Pattern
+            DemoMagazineAdapter();              // Adapter Pattern
+            DemoComposite();                    // Composite Pattern
+            DemoBookstoreFacade();              // Facade Pattern
+            DemoBeverageDecorator();            // Decorator Pattern
 
             // Whiteboard Solutions
-            DemoIsPalindrome();             // Palindrome Whiteboard Question
-            DemoFizzBuzz();                 // FizzBuzz Whiteboard Question
-            DemoReverseString();            // Reverse String Whiteboard Question
-            DemoCountDuplicateChars();      // Duplicate Character Counting Whiteboard Question
-            DemoReverseLinkedList();        // Reverses Linked List Whiteboard Question
-            DemoCombineLists();             // Combine Linked Lists Whiteboard Question
+            DemoIsPalindrome();                 // Palindrome Whiteboard Question
+            DemoFizzBuzz();                     // FizzBuzz Whiteboard Question
+            DemoReverseString();                // Reverse String Whiteboard Question
+            DemoCountDuplicateChars();          // Duplicate Character Counting Whiteboard Question
+            DemoReverseLinkedList();            // Reverses Linked List Whiteboard Question
+            DemoCombineLists();                 // Combine Linked Lists Whiteboard Question
         }
 
         #region Creational Patterns
@@ -252,6 +253,38 @@ namespace CSharp.Algorithms
             user2.Send("Hello Alice!");
 
             Console.WriteLine("{0} Complete", nameof(DemoChatMediator));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of SupportChainOfResponsibility to demonstrate the behavioral pattern, Chain of Responsibility.
+        /// </summary>
+        private static void DemoSupportChainOfResponsibility()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoSupportChainOfResponsibility));
+
+            SupportHandler generalSupport = new GeneralSupportHandler();
+            SupportHandler technicalSupport = new TechnicalSupportHandler();
+            SupportHandler managerialSupport = new ManagerialSupportHandler();
+
+            generalSupport.SetSuccessor(technicalSupport);
+            technicalSupport.SetSuccessor(managerialSupport);
+
+            var tickets = new List<SupportTicket>
+            {
+                new SupportTicket("Password reset issue", "General"),
+                new SupportTicket("System crash", "Technical"),
+                new SupportTicket("Customer complaint", "Managerial"),
+                new SupportTicket("Unknown issue", "Unknown")
+            };
+
+            foreach (var ticket in tickets)
+            {
+                generalSupport.HandleRequest(ticket);
+            }
+
+            Console.WriteLine("{0} Complete", nameof(DemoSupportChainOfResponsibility));
             Console.WriteLine("----------");
         }
         #endregion
