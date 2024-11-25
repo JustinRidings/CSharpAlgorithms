@@ -113,30 +113,113 @@ D -->|handleRequest| E[Result]
 - [Builder](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarBuilder.cs)
   - **Summary**: Separates the construction of a complex object from its representation so that the same construction process can create different representations.
   - **When to use**: When you need to construct complex objects step by step and allow for different representations.
+
+```mermaid
+graph TD
+    A[Director] -->|construct| B[BuilderInterface]
+    B -->|buildPart| C[ConcreteBuilder]
+    C -->|getResult| D[Product]
+```
+
 - [Factory](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarFactory.cs)
   - **Summary**: Defines an interface for creating an object, but lets subclasses alter the type of objects that will be created.
   - **When to use**: When you need to delegate the instantiation logic to subclasses or to centralize the creation logic for a specific type of object.
+ 
+```mermaid
+graph TD
+A[Client] -->|create| B[Factory]
+B -->|createProduct| C[ProductInterface]
+C -->|ConcreteProductA| D[ProductA]
+C -->|ConcreteProductB| E[ProductB]
+```
+
 - [Singleton](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarSingleton.cs)
   - **Summary**: Ensures a class has only one instance and provides a global point of access to it.
   - **When to use**: When you need exactly one instance of a class to control access to shared resources.
+ 
+```mermaid
+graph TD
+    A[Client1] -->|getInstance| B[Singleton]
+    A[Client2] -->|getInstance| B[Singleton]
+    B -->|method| C[Result]
+```
+
 - [LazyLoading](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/OrderLazy.cs)
   - **Summary**: Delays the initialization of an object until it is actually needed, which can improve performance and reduce memory usage.
   - **When to use**: When you want to defer the initialization of an object until it's really needed to save resources.
+ 
+```mermaid
+graph TD
+  A[Client] -->|request| B[Proxy]
+  B -->|createInstance| C[RealSubject]
+  C -->|operation| D[Result]
+```
+
 - [Prototype](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/GameCharacterPrototype.cs)
   - **Summary**: Allows you to copy existing objects without making your code dependent on their classes.
   - **When to use**: When creating new instances of a class is expensive or complicated, or when you want to replicate an object configuration with minor changes.
+
+```mermaid
+graph TD
+  A[Client] -->|clone| B[Prototype]
+  B -->|clone| C[ConcretePrototype1]
+  B -->|clone| D[ConcretePrototype2]
+  C -->|use| E[Prototype1Result]
+  D -->|use| F[Prototype2Result]
+```
 
 ### Structural Patterns
 
 - [Facade](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BookstoreFacade.cs)
   - **Summary**: Provides a unified interface to a set of interfaces in a subsystem, making the subsystem easier to use.
   - **When to use**: When you need to simplify interactions with a complex system by providing a unified interface.
+ 
+```mermaid
+graph TD
+    A[Client] -->|use| B[Facade]
+    B -->|subsystem1| C[SubsystemClass1]
+    B -->|subsystem2| D[SubsystemClass2]
+    C -->|operation| E[Result1]
+    D -->|operation| F[Result2]
+```
+
 - [Adapter](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/MagazineAdapter.cs)
   - **Summary**: Converts the interface of a class into another interface the clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
   - **When to use**: When you need to integrate a new class that doesn't fit the existing interface or legacy system.
+ 
+```mermaid
+graph TD
+    A[Client] -->|use| B[Adapter]
+    B -->|adapt| C[Adaptee]
+    C -->|specificRequest| D[Request]
+```
+
 - [Decorator](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BeverageDecorator.cs)
   - **Summary**: Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
   - **When to use**: When you need to add behaviors or responsibilities to objects dynamically without modifying their code.
+ 
+```mermaid
+graph TD
+    A[Client] -->|use| B[Component]
+    B -->|wraps| C[ConcreteComponent]
+    B -->|decorates| D[ConcreteDecorator]
+    D -->|decorates| E[ConcreteComponent]
+    E -->|operation| F[Result]
+```
+
 - [Composite](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/ComponentComposite.cs)
   - **Summary**: Composes objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
   - **When to use**: When you need to work with tree structures and treat individual objects and compositions uniformly.
+
+```mermaid
+graph TD
+    A[Client] -->|use| B[Component]
+    B -->|composite| C[Composite]
+    B -->|leaf| D[Leaf]
+    C -->|add| D
+    C -->|operation| E[Result]
+    D -->|operation| E
+```
+
+ 
+
