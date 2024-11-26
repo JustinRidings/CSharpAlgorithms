@@ -221,5 +221,16 @@ graph TD
     D -->|operation| E
 ```
 
- 
+- [Flyweight](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/TreeFlyweight.cs)
+  - **Summary**: Minimizes memory usage by sharing as much data as possible with similar objects.
+  - **When to use**: When an application uses a large number of objects that share common properties, and you want to reduce memory consumption and improve performance by sharing common data.
+
+```mermaid
+graph TD
+    A[Client] -->|requestTree| B[TreeFactory]
+    B -->|getTreeType| C[TreeType]
+    C -->|shared data| D[Tree]
+    D -->|unique data| E[Draw]
+    A -->|position| E
+```
 

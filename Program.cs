@@ -28,6 +28,7 @@ namespace CSharp.Algorithms
             DemoComposite();                    // Composite Pattern
             DemoBookstoreFacade();              // Facade Pattern
             DemoBeverageDecorator();            // Decorator Pattern
+            DemoTreeFlyweight();                // Flyweight Pattern
 
             // Whiteboard Solutions
             DemoIsPalindrome();                 // Palindrome Whiteboard Question
@@ -362,6 +363,33 @@ namespace CSharp.Algorithms
             Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
 
             Console.WriteLine("{0} Complete", nameof(DemoBeverageDecorator));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of TreeFlyweight to demonstrate the structural pattern, Flyweight.
+        /// </summary>
+        private static void DemoTreeFlyweight()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoTreeFlyweight));
+
+            TreeFactory factory = new TreeFactory();
+
+            var trees = new List<Tree>
+            {
+                new Tree(1, 1, factory.GetTreeType("Oak", "Green", "Rough")),
+                new Tree(2, 2, factory.GetTreeType("Pine", "Green", "Smooth")),
+                new Tree(1, 1, factory.GetTreeType("Oak", "Green", "Rough")), // Reuses existing Flyweight object
+                new Tree(3, 3, factory.GetTreeType("Birch", "Yellow", "Rough"))
+            };
+
+            foreach (var tree in trees)
+            {
+                tree.Draw();
+            }
+
+            Console.WriteLine("{0} Complete", nameof(DemoTreeFlyweight));
             Console.WriteLine("----------");
         }
         #endregion
