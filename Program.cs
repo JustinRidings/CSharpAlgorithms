@@ -29,6 +29,7 @@ namespace CSharp.Algorithms
             DemoBookstoreFacade();              // Facade Pattern
             DemoBeverageDecorator();            // Decorator Pattern
             DemoTreeFlyweight();                // Flyweight Pattern
+            DemoBankProxy();                    // Proxy Pattern
 
             // Whiteboard Solutions
             DemoIsPalindrome();                 // Palindrome Whiteboard Question
@@ -390,6 +391,25 @@ namespace CSharp.Algorithms
             }
 
             Console.WriteLine("{0} Complete", nameof(DemoTreeFlyweight));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of BankProxy to demonstrate the structural pattern, Proxy.
+        /// </summary>
+        private static void DemoBankProxy()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoBankProxy));
+
+            IBankAccount bankAccount = new BankAccount();
+            IBankAccount proxy = new BankAccountProxy(bankAccount, "user", "password");
+
+            proxy.Deposit(100);
+            proxy.Withdraw(50);
+            Console.WriteLine($"Balance: {proxy.GetBalance():C}");
+
+            Console.WriteLine("{0} Complete", nameof(DemoBankProxy));
             Console.WriteLine("----------");
         }
         #endregion

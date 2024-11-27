@@ -234,3 +234,16 @@ graph TD
     A -->|position| E
 ```
 
+- [Proxy](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BankProxy.cs)
+  - **Summary**: Provides a surrogate or placeholder for another object to control access to it.
+  - **When to use**: When you need to control access to an object, add additional functionality such as logging or authentication, or work with remote objects or objects that are expensive to create.
+
+```mermaid
+graph TD
+    A[Client] -->|request| B[Proxy]
+    B -->|authenticate| C[RealSubject]
+    B -->|log request| D[Logger]
+    C -->|execute| E[Result]
+    D -->|store log| F[LogStorage]
+    A -->|get result| E
+```
