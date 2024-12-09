@@ -108,6 +108,34 @@ C -->|handleRequest| D[Handler3]
 D -->|handleRequest| E[Result]
 ```
 
+- [Visitor](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/ShoppingVisitor.cs)
+  - **Summary**: When you need to perform various operations on objects without changing their classes.
+  - **When to use**: When you want to separate an algorithm from the objects on which it operates.
+
+```mermaid
+graph TD
+    A[Client] -->|creates| B[ConcreteElement]
+    B -->|accept| C[Visitor]
+    C -->|calls visit on| D[ConcreteVisitor]
+    D -->|operates on| B
+    B -->|notifies| A
+
+    subgraph ConcreteElement
+        E[Candy]
+        F[Fruit]
+    end
+
+    subgraph Visitor
+        G[ShoppingCartVisitor]
+        H[ReportVisitor]
+    end
+
+    E -->|accept| G
+    E -->|accept| H
+    F -->|accept| G
+    F -->|accept| H
+```
+
 ### Creational Patterns
 
 - [Builder](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarBuilder.cs)
