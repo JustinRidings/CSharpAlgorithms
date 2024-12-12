@@ -23,6 +23,7 @@ namespace CSharp.Algorithms
             DemoChatMediator();                 // Mediator Pattern
             DemoSupportChainOfResponsibility(); // Chain of Responsibility Pattern
             DemoShoppingVisitor();              // Visitor Pattern
+            DemoDocumentTemplateMethod();       // Template Method Pattern
 
             // Structural
             DemoMagazineAdapter();              // Adapter Pattern
@@ -316,95 +317,110 @@ namespace CSharp.Algorithms
 
             Console.WriteLine($"Total Price: {shoppingCartVisitor.TotalPrice:C}");
         }
-#endregion
-#region Structural Patterns
-/// <summary>
-/// Demonstrates the implementation of MagazineAdapter to demonstrate the structural pattern, Adapter.
-/// </summary>
-private static void DemoMagazineAdapter()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoMagazineAdapter));
 
-    Book book = new Book();
-    book.Read();
+        /// <summary>
+        /// Demonstrates the implementation of DocumentTemplateMethod to demonstrate the behavioral pattern, Template Method.
+        /// </summary>
+        private static void DemoDocumentTemplateMethod()
+        {
+            DocumentProcessor wordProcessor = new WordDocumentProcessor();
+            DocumentProcessor pdfProcessor = new PdfDocumentProcessor();
 
-    Magazine magazine = new Magazine();
-    Book magazineAdapter = new MagazineAdapter(magazine);
-    magazineAdapter.Read();
+            Console.WriteLine("Processing Word Document:");
+            wordProcessor.ProcessDocument();
 
-    Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("\nProcessing PDF Document:");
+            pdfProcessor.ProcessDocument();
+        }
+        #endregion
+        #region Structural Patterns
+        /// <summary>
+        /// Demonstrates the implementation of MagazineAdapter to demonstrate the structural pattern, Adapter.
+        /// </summary>
+        private static void DemoMagazineAdapter()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoMagazineAdapter));
 
-/// <summary>
-/// Demonstrates the implementation of ComponentComposite to demonstrate the structural pattern, Composite.
-/// </summary>
-private static void DemoComposite()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoComposite));
+            Book book = new Book();
+            book.Read();
 
-    Composite root = new Composite("Root");
-    root.Add(new Leaf("Leaf A"));
-    Composite composite = new Composite("Composite X");
-    composite.Add(new Leaf("Leaf XA"));
-    composite.Add(new Leaf("Leaf XB"));
-    root.Add(composite);
-    root.Add(new Leaf("Leaf B"));
-    root.Display(1);
+            Magazine magazine = new Magazine();
+            Book magazineAdapter = new MagazineAdapter(magazine);
+            magazineAdapter.Read();
 
-    Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of BookstoreFacade to demonstrate the structural pattern, Facade.
-/// </summary>
-private static void DemoBookstoreFacade()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoBookstoreFacade));
+        /// <summary>
+        /// Demonstrates the implementation of ComponentComposite to demonstrate the structural pattern, Composite.
+        /// </summary>
+        private static void DemoComposite()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoComposite));
 
-    BookstoreFacade bookstoreFacade = new BookstoreFacade();
-    bookstoreFacade.OrderBook();
+            Composite root = new Composite("Root");
+            root.Add(new Leaf("Leaf A"));
+            Composite composite = new Composite("Composite X");
+            composite.Add(new Leaf("Leaf XA"));
+            composite.Add(new Leaf("Leaf XB"));
+            root.Add(composite);
+            root.Add(new Leaf("Leaf B"));
+            root.Display(1);
 
-    Console.WriteLine("{0} Complete", nameof(DemoBookstoreFacade));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoMagazineAdapter));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of BeverageDecorator to demonstrate the structural pattern, Decorator.
-/// </summary>
-private static void DemoBeverageDecorator()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoBeverageDecorator));
+        /// <summary>
+        /// Demonstrates the implementation of BookstoreFacade to demonstrate the structural pattern, Facade.
+        /// </summary>
+        private static void DemoBookstoreFacade()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoBookstoreFacade));
 
-    IBeverage beverage = new Espresso();
-    Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+            BookstoreFacade bookstoreFacade = new BookstoreFacade();
+            bookstoreFacade.OrderBook();
 
-    beverage = new Milk(beverage);
-    Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+            Console.WriteLine("{0} Complete", nameof(DemoBookstoreFacade));
+            Console.WriteLine("----------");
+        }
 
-    beverage = new Mocha(beverage);
-    Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
+        /// <summary>
+        /// Demonstrates the implementation of BeverageDecorator to demonstrate the structural pattern, Decorator.
+        /// </summary>
+        private static void DemoBeverageDecorator()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoBeverageDecorator));
 
-    Console.WriteLine("{0} Complete", nameof(DemoBeverageDecorator));
-    Console.WriteLine("----------");
-}
+            IBeverage beverage = new Espresso();
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
 
-/// <summary>
-/// Demonstrates the implementation of TreeFlyweight to demonstrate the structural pattern, Flyweight.
-/// </summary>
-private static void DemoTreeFlyweight()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoTreeFlyweight));
+            beverage = new Milk(beverage);
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
 
-    TreeFactory factory = new TreeFactory();
+            beverage = new Mocha(beverage);
+            Console.WriteLine($"{beverage.GetDescription()} ${beverage.GetCost()}");
 
-    var trees = new List<Tree>
+            Console.WriteLine("{0} Complete", nameof(DemoBeverageDecorator));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of TreeFlyweight to demonstrate the structural pattern, Flyweight.
+        /// </summary>
+        private static void DemoTreeFlyweight()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoTreeFlyweight));
+
+            TreeFactory factory = new TreeFactory();
+
+            var trees = new List<Tree>
             {
                 new Tree(1, 1, factory.GetTreeType("Oak", "Green", "Rough")),
                 new Tree(2, 2, factory.GetTreeType("Pine", "Green", "Smooth")),
@@ -412,189 +428,189 @@ private static void DemoTreeFlyweight()
                 new Tree(3, 3, factory.GetTreeType("Birch", "Yellow", "Rough"))
             };
 
-    foreach (var tree in trees)
-    {
-        tree.Draw();
-    }
+            foreach (var tree in trees)
+            {
+                tree.Draw();
+            }
 
-    Console.WriteLine("{0} Complete", nameof(DemoTreeFlyweight));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoTreeFlyweight));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of BankProxy to demonstrate the structural pattern, Proxy.
-/// </summary>
-private static void DemoBankProxy()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoBankProxy));
+        /// <summary>
+        /// Demonstrates the implementation of BankProxy to demonstrate the structural pattern, Proxy.
+        /// </summary>
+        private static void DemoBankProxy()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoBankProxy));
 
-    IBankAccount bankAccount = new BankAccount();
-    IBankAccount proxy = new BankAccountProxy(bankAccount, "user", "password");
+            IBankAccount bankAccount = new BankAccount();
+            IBankAccount proxy = new BankAccountProxy(bankAccount, "user", "password");
 
-    proxy.Deposit(100);
-    proxy.Withdraw(50);
-    Console.WriteLine($"Balance: {proxy.GetBalance():C}");
+            proxy.Deposit(100);
+            proxy.Withdraw(50);
+            Console.WriteLine($"Balance: {proxy.GetBalance():C}");
 
-    Console.WriteLine("{0} Complete", nameof(DemoBankProxy));
-    Console.WriteLine("----------");
-}
-#endregion
-#region Whiteboard Solutions
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.IsPalindrome function, which demonstrates
-/// determining if a string is a Palindrome.
-/// </summary>
-private static void DemoIsPalindrome()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoIsPalindrome));
+            Console.WriteLine("{0} Complete", nameof(DemoBankProxy));
+            Console.WriteLine("----------");
+        }
+        #endregion
+        #region Whiteboard Solutions
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.IsPalindrome function, which demonstrates
+        /// determining if a string is a Palindrome.
+        /// </summary>
+        private static void DemoIsPalindrome()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoIsPalindrome));
 
-    string testString1 = "Racecar";
-    string testString2 = "Hello";
+            string testString1 = "Racecar";
+            string testString2 = "Hello";
 
-    Console.WriteLine($"{testString1} is a palindrome: {WhiteboardSolutions.IsPalindrome(testString1)}");
-    Console.WriteLine($"{testString2} is a palindrome: {WhiteboardSolutions.IsPalindrome(testString2)}");
+            Console.WriteLine($"{testString1} is a palindrome: {WhiteboardSolutions.IsPalindrome(testString1)}");
+            Console.WriteLine($"{testString2} is a palindrome: {WhiteboardSolutions.IsPalindrome(testString2)}");
 
-    Console.WriteLine("{0} Complete", nameof(DemoIsPalindrome));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoIsPalindrome));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.FizzBuzz function, which counts to N, printing the words
-/// "Fizz", "Buzz" and "FizzBuzz" for numbers divisible by 3,5, or both.
-/// </summary>
-private static void DemoFizzBuzz()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoFizzBuzz));
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.FizzBuzz function, which counts to N, printing the words
+        /// "Fizz", "Buzz" and "FizzBuzz" for numbers divisible by 3,5, or both.
+        /// </summary>
+        private static void DemoFizzBuzz()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoFizzBuzz));
 
-    WhiteboardSolutions.FizzBuzz(20);
+            WhiteboardSolutions.FizzBuzz(20);
 
-    Console.WriteLine("{0} Complete", nameof(DemoFizzBuzz));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoFizzBuzz));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.ReverseString, which reverses a string.
-/// </summary>
-private static void DemoReverseString()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoReverseString));
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.ReverseString, which reverses a string.
+        /// </summary>
+        private static void DemoReverseString()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoReverseString));
 
-    string original = "Hello, World!";
-    string reversed = WhiteboardSolutions.ReverseString(original);
-    Console.WriteLine($"Original: {original}");
-    Console.WriteLine($"Reversed: {reversed}");
+            string original = "Hello, World!";
+            string reversed = WhiteboardSolutions.ReverseString(original);
+            Console.WriteLine($"Original: {original}");
+            Console.WriteLine($"Reversed: {reversed}");
 
-    Console.WriteLine("{0} Complete", nameof(DemoReverseString));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoReverseString));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.CountDuplicateCharacters, which counts the maximum 
-/// amount of any duplicate characters within a string.
-/// </summary>
-private static void DemoCountDuplicateChars()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoCountDuplicateChars));
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.CountDuplicateCharacters, which counts the maximum 
+        /// amount of any duplicate characters within a string.
+        /// </summary>
+        private static void DemoCountDuplicateChars()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoCountDuplicateChars));
 
-    string testString = "Hello, World!";
-    int duplicateCount = WhiteboardSolutions.CountDuplicateCharacters(testString);
-    Console.WriteLine($"Number of duplicate characters: {duplicateCount}");
+            string testString = "Hello, World!";
+            int duplicateCount = WhiteboardSolutions.CountDuplicateCharacters(testString);
+            Console.WriteLine($"Number of duplicate characters: {duplicateCount}");
 
-    string testString2 = "OoOoOoOoOoOoOoOo";
-    int duplicateCount2 = WhiteboardSolutions.CountDuplicateCharacters(testString2);
-    Console.WriteLine($"Number of duplicate characters: {duplicateCount2}");
+            string testString2 = "OoOoOoOoOoOoOoOo";
+            int duplicateCount2 = WhiteboardSolutions.CountDuplicateCharacters(testString2);
+            Console.WriteLine($"Number of duplicate characters: {duplicateCount2}");
 
-    Console.WriteLine("{0} Complete", nameof(DemoCountDuplicateChars));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoCountDuplicateChars));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.ReverseLinkedList, which accepts a LinkedList as 
-/// a parameter, and then reverses it.
-/// </summary>
-private static void DemoReverseLinkedList()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoReverseLinkedList));
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.ReverseLinkedList, which accepts a LinkedList as 
+        /// a parameter, and then reverses it.
+        /// </summary>
+        private static void DemoReverseLinkedList()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoReverseLinkedList));
 
-    LinkedList<int> originalList = new LinkedList<int>();
-    originalList.AddLast(1);
-    originalList.AddLast(2);
-    originalList.AddLast(3);
-    originalList.AddLast(4);
+            LinkedList<int> originalList = new LinkedList<int>();
+            originalList.AddLast(1);
+            originalList.AddLast(2);
+            originalList.AddLast(3);
+            originalList.AddLast(4);
 
-    LinkedList<int> reversedList = WhiteboardSolutions.ReverseLinkedList(originalList);
+            LinkedList<int> reversedList = WhiteboardSolutions.ReverseLinkedList(originalList);
 
-    Console.WriteLine("Original List:");
-    foreach (var item in originalList)
-    {
-        Console.WriteLine(item);
-    }
+            Console.WriteLine("Original List:");
+            foreach (var item in originalList)
+            {
+                Console.WriteLine(item);
+            }
 
-    Console.WriteLine("\nReversed List:");
-    foreach (var item in reversedList)
-    {
-        Console.WriteLine(item);
-    }
+            Console.WriteLine("\nReversed List:");
+            foreach (var item in reversedList)
+            {
+                Console.WriteLine(item);
+            }
 
-    Console.WriteLine("{0} Complete", nameof(DemoReverseLinkedList));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoReverseLinkedList));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the implementation of WhiteboardSolutions.CombineLists, which demonstrates combining two Linked Lists
-/// </summary>
-private static void DemoCombineLists()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoCombineLists));
+        /// <summary>
+        /// Demonstrates the implementation of WhiteboardSolutions.CombineLists, which demonstrates combining two Linked Lists
+        /// </summary>
+        private static void DemoCombineLists()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoCombineLists));
 
-    LinkedList<int> list1 = new LinkedList<int>(new[] { 1, 3, 5 });
-    LinkedList<int> list2 = new LinkedList<int>(new[] { 2, 4, 6 });
+            LinkedList<int> list1 = new LinkedList<int>(new[] { 1, 3, 5 });
+            LinkedList<int> list2 = new LinkedList<int>(new[] { 2, 4, 6 });
 
-    LinkedList<int> combinedList = WhiteboardSolutions.CombineLists(list1, list2);
+            LinkedList<int> combinedList = WhiteboardSolutions.CombineLists(list1, list2);
 
-    Console.WriteLine("Combined List:");
-    foreach (var item in combinedList)
-    {
-        Console.Write(item + " ");
-    }
+            Console.WriteLine("Combined List:");
+            foreach (var item in combinedList)
+            {
+                Console.Write(item + " ");
+            }
 
-    Console.WriteLine("{0} Complete", nameof(DemoCombineLists));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoCombineLists));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Demonstrates the creation of OrderLazy to demonstrate the creational pattern, Lazy Loading.
-/// </summary>
-private static void DemoLazyLoading()
-{
-    Console.WriteLine("----------");
-    Console.WriteLine("Now Running Demo: {0}", nameof(DemoLazyLoading));
+        /// <summary>
+        /// Demonstrates the creation of OrderLazy to demonstrate the creational pattern, Lazy Loading.
+        /// </summary>
+        private static void DemoLazyLoading()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoLazyLoading));
 
-    var order = new Order();
-    Console.WriteLine("Order created.");
-    Console.WriteLine("Order details: " + order.OrderDetails.Detail);
+            var order = new Order();
+            Console.WriteLine("Order created.");
+            Console.WriteLine("Order details: " + order.OrderDetails.Detail);
 
-    Console.WriteLine("{0} Complete", nameof(DemoLazyLoading));
-    Console.WriteLine("----------");
-}
+            Console.WriteLine("{0} Complete", nameof(DemoLazyLoading));
+            Console.WriteLine("----------");
+        }
 
-/// <summary>
-/// Internal method for simplifying redundant statements
-/// </summary>
-/// <param name="car1">A Car object</param>
-/// <param name="car2">A Car object</param>
-internal static void DisplayCarInfo(Car car1, Car car2)
-{
-    car1.DisplayInfo();
-    car2.DisplayInfo();
-}
+        /// <summary>
+        /// Internal method for simplifying redundant statements
+        /// </summary>
+        /// <param name="car1">A Car object</param>
+        /// <param name="car2">A Car object</param>
+        internal static void DisplayCarInfo(Car car1, Car car2)
+        {
+            car1.DisplayInfo();
+            car2.DisplayInfo();
+        }
         #endregion
     }
 }

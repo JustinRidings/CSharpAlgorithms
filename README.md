@@ -136,6 +136,37 @@ graph TD
     F -->|accept| H
 ```
 
+- [Template Method](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/DocumentTemplateMethod.cs)
+  - **Summary**: Defines the skeleton of an algorithm in a method, allowing subclasses to redefine certain steps without changing the algorithm's structure.
+  - **When to use**: When you need to define the general flow of an algorithm but allow subclasses to customize specific steps.
+
+```mermaid
+graph TD
+    A[Client] -->|calls| B[TemplateMethod]
+    B -->|invokes| C[OpenDocument]
+    B -->|invokes| D[ExtractContent]
+    B -->|invokes| E[FormatDocument]
+    B -->|invokes| F[SaveDocument]
+
+    classDef abstract fill:#f9f,stroke:#333,stroke-width:4px;
+    class B abstract;
+
+    subgraph ConcreteClasses
+        G[WordDocumentProcessor]
+        H[PdfDocumentProcessor]
+    end
+
+    C -->|implemented by| G
+    D -->|implemented by| G
+    E -->|implemented by| G
+    F -->|implemented by| G
+
+    C -->|implemented by| H
+    D -->|implemented by| H
+    E -->|implemented by| H
+    F -->|implemented by| H
+```
+
 ### Creational Patterns
 
 - [Builder](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarBuilder.cs)
