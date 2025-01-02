@@ -24,6 +24,7 @@ namespace CSharp.Algorithms
             DemoSupportChainOfResponsibility(); // Chain of Responsibility Pattern
             DemoShoppingVisitor();              // Visitor Pattern
             DemoDocumentTemplateMethod();       // Template Method Pattern
+            DemoTextMemento();                  // Memento Pattern
 
             // Structural
             DemoMagazineAdapter();              // Adapter Pattern
@@ -332,6 +333,26 @@ namespace CSharp.Algorithms
 
             Console.WriteLine("\nProcessing PDF Document:");
             pdfProcessor.ProcessDocument();
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of TextMemento to demonstrate the behavioral pattern, Memento.
+        /// </summary>
+        public static void DemoTextMemento()
+        {
+            TextEditor editor = new TextEditor();
+            TextHistory history = new TextHistory();
+
+            editor.SetText("Hello, world!");
+            history.Save(editor.SaveTextToMemento());
+
+            editor.SetText("Hello, C#!");
+            history.Save(editor.SaveTextToMemento());
+
+            editor.SetText("Hello, Design Patterns!");
+
+            editor.RestoreTextFromMemento(history.Undo());
+            editor.RestoreTextFromMemento(history.Undo());
         }
         #endregion
         #region Structural Patterns

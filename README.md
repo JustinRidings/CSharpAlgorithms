@@ -167,6 +167,18 @@ graph TD
     F -->|implemented by| H
 ```
 
+- [Memento](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Behavioral/TextMemento.cs)
+  - **Summary**: Captures and externalizes an object's internal state without violating encapsulation, so that the object can be restored to this state later.
+  - **When to use**: When you need to implement a feature that allows an object to be restored to a previous state, such as undo operations in text editors or maintaining historical states.
+
+```mermaid
+graph TD
+    A[Client] -->|calls| B[TextEditor]
+    B -->|creates/restores| C[TextMemento]
+    D[TextHistory] -->|stores| C
+    D -->|retrieves| C
+```
+
 ### Creational Patterns
 
 - [Builder](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/CarBuilder.cs)
