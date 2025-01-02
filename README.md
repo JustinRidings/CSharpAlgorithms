@@ -306,3 +306,27 @@ graph TD
     D -->|store log| F[LogStorage]
     A -->|get result| E
 ```
+
+- [Bridge](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/ShapeBridge.cs)
+  - **Summary**: Decouples an abstraction from its implementation, allowing them to vary independently. Useful for avoiding a permanent binding between an abstraction and its implementation.
+  - **When to use**: When you need to separate the abstraction of a concept from its actual implementation, allowing both to be developed and extended independently.
+ 
+```mermaid
+graph TD
+    A[Client] -->|calls| B[Shape]
+    B -->|uses| C[IColor]
+    B -->|uses| D[Circle]
+    B -->|uses| E[Rectangle]
+    C -->|implements| F[RedColor]
+    C -->|implements| G[BlueColor]
+    D -->|uses| H[RedColor]
+    D -->|uses| I[BlueColor]
+    E -->|uses| J[RedColor]
+    E -->|uses| K[BlueColor]
+    F -->|operation| L[ApplyColor]
+    G -->|operation| M[ApplyColor]
+    H -->|operation| N[Draw]
+    I -->|operation| O[Draw]
+    J -->|operation| P[Draw]
+    K -->|operation| Q[Draw]
+```

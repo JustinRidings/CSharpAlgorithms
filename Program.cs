@@ -32,6 +32,7 @@ namespace CSharp.Algorithms
             DemoBeverageDecorator();            // Decorator Pattern
             DemoTreeFlyweight();                // Flyweight Pattern
             DemoBankProxy();                    // Proxy Pattern
+            DemoShapeBridge();                  // Bridge Pattern
 
             // Whiteboard Solutions
             DemoIsPalindrome();                 // Palindrome Whiteboard Question
@@ -454,6 +455,18 @@ namespace CSharp.Algorithms
 
             Console.WriteLine("{0} Complete", nameof(DemoBankProxy));
             Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of ShapeBridge to demonstrate the structural pattern, Bridge.
+        /// </summary>
+        public static void DemoShapeBridge()
+        {
+            Shape circle = new Circle(new RedColor());
+            circle.Draw();
+
+            Shape rectangle = new Rectangle(new BlueColor());
+            rectangle.Draw();
         }
         #endregion
         #region Whiteboard Solutions
