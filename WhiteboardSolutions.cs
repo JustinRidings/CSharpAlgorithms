@@ -173,4 +173,48 @@
 
         return combinedList;
     }
+
+    /// <summary>
+    /// Finds two numbers in an array that add up to a target number
+    /// </summary>
+    /// <param name="nums">Array of numbers</param>
+    /// <param name="target">Target Sum number</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException">Thrown when there is no solution.</exception>
+    public static int[] TwoSum(int[] nums, int target)
+    {
+        Dictionary<int, int> map = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int complement = target - nums[i];
+            if (map.ContainsKey(complement))
+            {
+                return new int[] { map[complement], i };
+            }
+            map[nums[i]] = i;
+        }
+        throw new ArgumentException("No two sum solution");
+    }
+
+    /// <summary>
+    /// Finds the length of the longest substring without repeating characters
+    /// </summary>
+    /// <param name="s">Input string</param>
+    /// <returns>Length of substring</returns>
+    public static int LengthOfLongestSubstring(string s)
+    {
+        Dictionary<char, int> map = new Dictionary<char, int>();
+        int maxLength = 0, left = 0;
+        for (int right = 0; right < s.Length; right++)
+        {
+            if (map.ContainsKey(s[right]))
+            {
+                left = Math.Max(map[s[right]] + 1, left);
+            }
+            map[s[right]] = right;
+            maxLength = Math.Max(maxLength, right - left + 1);
+        }
+        return maxLength;
+    }
+
 }

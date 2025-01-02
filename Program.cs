@@ -42,6 +42,8 @@ namespace CSharp.Algorithms
             DemoCountDuplicateChars();          // Duplicate Character Counting Whiteboard Question
             DemoReverseLinkedList();            // Reverses Linked List Whiteboard Question
             DemoCombineLists();                 // Combine Linked Lists Whiteboard Question
+            DemoTwoSum();                       // Two Sum Whiteboard Question
+            DemoLengthOfSubstring();            // Length of Longest Substring Whiteboard Question
         }
 
         #region Creational Patterns
@@ -52,11 +54,13 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoCarFactory));
+
             ICarFactory factory = new CarFactory();
             Car car1 = factory.CreateCar("Toyota", "Corolla", "Red");
             Car car2 = factory.CreateCar("Ford", "Mustang", "Blue");
 
             DisplayCarInfo(car1, car2);
+
             Console.WriteLine("{0} Complete", nameof(DemoCarFactory));
             Console.WriteLine("----------");
         }
@@ -68,11 +72,13 @@ namespace CSharp.Algorithms
         {
             Console.WriteLine("----------");
             Console.WriteLine("Now Running Demo: {0}", nameof(DemoCarBuilder));
+
             CarBuilder builder = new CarBuilder();
             Car car1 = builder.SetMake("Toyota").SetModel("Corolla").SetColor("Blue").Build();
             Car car2 = builder.SetMake("Ford").SetModel("Mustang").SetColor("Red").Build();
 
             DisplayCarInfo(car1, car2);
+
             Console.WriteLine("{0} Complete", nameof(DemoCarBuilder));
             Console.WriteLine("----------");
         }
@@ -299,6 +305,8 @@ namespace CSharp.Algorithms
         /// </summary>
         private static void DemoShoppingVisitor()
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoShoppingVisitor));
 
             var items = new List<IElement>
             {
@@ -318,6 +326,9 @@ namespace CSharp.Algorithms
             }
 
             Console.WriteLine($"Total Price: {shoppingCartVisitor.TotalPrice:C}");
+
+            Console.WriteLine("{0} Complete", nameof(DemoShoppingVisitor));
+            Console.WriteLine("----------");
         }
 
         /// <summary>
@@ -325,6 +336,9 @@ namespace CSharp.Algorithms
         /// </summary>
         private static void DemoDocumentTemplateMethod()
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoDocumentTemplateMethod));
+
             DocumentProcessor wordProcessor = new WordDocumentProcessor();
             DocumentProcessor pdfProcessor = new PdfDocumentProcessor();
 
@@ -333,6 +347,9 @@ namespace CSharp.Algorithms
 
             Console.WriteLine("\nProcessing PDF Document:");
             pdfProcessor.ProcessDocument();
+
+            Console.WriteLine("{0} Complete", nameof(DemoDocumentTemplateMethod));
+            Console.WriteLine("----------");
         }
 
         /// <summary>
@@ -340,6 +357,9 @@ namespace CSharp.Algorithms
         /// </summary>
         public static void DemoTextMemento()
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoTextMemento));
+
             TextEditor editor = new TextEditor();
             TextHistory history = new TextHistory();
 
@@ -353,6 +373,9 @@ namespace CSharp.Algorithms
 
             editor.RestoreTextFromMemento(history.Undo());
             editor.RestoreTextFromMemento(history.Undo());
+
+            Console.WriteLine("{0} Complete", nameof(DemoTextMemento));
+            Console.WriteLine("----------");
         }
         #endregion
         #region Structural Patterns
@@ -483,11 +506,17 @@ namespace CSharp.Algorithms
         /// </summary>
         public static void DemoShapeBridge()
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoShapeBridge));
+
             Shape circle = new Circle(new RedColor());
             circle.Draw();
 
             Shape rectangle = new Rectangle(new BlueColor());
             rectangle.Draw();
+
+            Console.WriteLine("{0} Complete", nameof(DemoShapeBridge));
+            Console.WriteLine("----------");
         }
         #endregion
         #region Whiteboard Solutions
@@ -634,6 +663,40 @@ namespace CSharp.Algorithms
             Console.WriteLine("{0} Complete", nameof(DemoLazyLoading));
             Console.WriteLine("----------");
         }
+
+        /// <summary>
+        /// Demonstrates the implementation of TwoSum, which finds the indices of two numbers that add up to a target.
+        /// </summary>
+        private static void DemoTwoSum()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoTwoSum));
+
+            int[] nums = { 2, 7, 11, 15 };
+            int target = 9;
+            int[] result = WhiteboardSolutions.TwoSum(nums, target);
+            Console.WriteLine($"The numbers that add up to {target} are: [{result[0]}, {result[1]}]");
+
+            Console.WriteLine("{0} Complete", nameof(DemoTwoSum));
+            Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of LengthOfLongestSubstring, which finds the length of the longest substring without repeating characters.
+        /// </summary>
+        public static void DemoLengthOfSubstring()
+        {
+            Console.WriteLine("----------");
+            Console.WriteLine("Now Running Demo: {0}", nameof(DemoLengthOfSubstring));
+
+            string input = "abcabcbb";
+            int length = WhiteboardSolutions.LengthOfLongestSubstring(input);
+            Console.WriteLine($"The length of the longest substring without repeating characters in \"{input}\" is: {length}");
+
+            Console.WriteLine("{0} Complete", nameof(DemoLengthOfSubstring));
+            Console.WriteLine("----------");
+        }
+
 
         /// <summary>
         /// Internal method for simplifying redundant statements
