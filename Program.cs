@@ -13,6 +13,7 @@ namespace CSharp.Algorithms
             DemoCarSingleton();                 // Singleton Pattern
             DemoLazyLoading();                  // Lazy Loading Pattern
             DemoCharacterPrototype();           // Prototype Pattern
+            DemoAbstractFactory();              // Abstract Factory Pattern
 
             // Behavioral
             DemoBurgerObserver();               // Observer Pattern
@@ -121,6 +122,20 @@ namespace CSharp.Algorithms
 
             Console.WriteLine("{0} Complete", nameof(DemoCharacterPrototype));
             Console.WriteLine("----------");
+        }
+
+        /// <summary>
+        /// Demonstrates the implementation of NotificationService to demonstrate the creational pattern, Abstract Factory.
+        /// </summary>
+        private static void DemoAbstractFactory()
+        {
+            INotificationFactory basicFactory = new BasicNotificationFactory();
+            NotificationService basicService = new NotificationService(basicFactory);
+            basicService.SendNotifications("Hello! This is a basic notification.");
+
+            INotificationFactory premiumFactory = new PremiumNotificationFactory();
+            NotificationService premiumService = new NotificationService(premiumFactory);
+            premiumService.SendNotifications("Hello! This is a premium notification.");
         }
         #endregion
         #region Behavioral Patterns

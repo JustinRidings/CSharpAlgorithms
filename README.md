@@ -239,6 +239,26 @@ graph TD
   D -->|use| F[Prototype2Result]
 ```
 
+- [Abstract Factory](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Creational/AbstractFactory.cs)
+  - **Summary**: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+  - **When to use**: When a system needs to be independent of how its objects are created, composed, and represented, or when a system should be configured with one of multiple families of products.
+
+```mermaid
+graph TD
+  A[Client] -->|use| B[NotificationService]
+  B -->|create| C[INotificationFactory]
+  C -->|create| D[BasicNotificationFactory]
+  C -->|create| E[PremiumNotificationFactory]
+  D -->|create| F[BasicEmailNotification]
+  D -->|create| G[BasicSmsNotification]
+  E -->|create| H[PremiumEmailNotification]
+  E -->|create| I[PremiumSmsNotification]
+  F -->|send| J[Basic Email Sent]
+  G -->|send| K[Basic SMS Sent]
+  H -->|send| L[Premium Email Sent]
+  I -->|send| M[Premium SMS Sent]
+```
+
 ### Structural Patterns
 
 - [Facade](https://github.com/JustinRidings/CSharpAlgorithms/blob/main/Patterns/Structural/BookstoreFacade.cs)
