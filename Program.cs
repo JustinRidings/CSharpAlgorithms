@@ -45,6 +45,8 @@ namespace CSharp.Algorithms
             DemoCombineLists();                 // Combine Linked Lists Whiteboard Question
             DemoTwoSum();                       // Two Sum Whiteboard Question
             DemoLengthOfSubstring();            // Length of Longest Substring Whiteboard Question
+            DemoLargestRectangle();             // Largest Rectangle Area Whiteboard Question
+            DemoFactorial();                    // Factorial Whiteboard Question
         }
 
         #region Creational Patterns
@@ -712,6 +714,29 @@ namespace CSharp.Algorithms
             Console.WriteLine("----------");
         }
 
+        /// <summary>
+        /// Demonstrates the implementation of LargestRectangleArea, which finds the area of the largest rectangle in a histogram.
+        /// </summary>
+        public static void DemoLargestRectangle()
+        {
+            int[] heights = { 2, 1, 5, 6, 2, 3 };
+            int maxArea = WhiteboardSolutions.LargestRectangleArea(heights);
+            Console.WriteLine("The maximum area of the rectangle in the histogram is: " + maxArea);
+        }
+
+        /// <summary>
+        /// Demonstrates the CalculateFactorial method, which finds the factorial of a non-negative integer.
+        /// </summary>
+        public static void DemoFactorial()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 10 };
+
+            foreach (int number in numbers)
+            {
+                long factorial = WhiteboardSolutions.CalculateFactorial(number);
+                Console.WriteLine($"Factorial of {number} is {factorial}");
+            }
+        }
 
         /// <summary>
         /// Internal method for simplifying redundant statements

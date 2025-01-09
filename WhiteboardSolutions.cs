@@ -256,4 +256,27 @@
 
         return maxArea;
     }
+
+    /// <summary>
+    /// Accepts a non-negative integer and returns its factorial using recursion
+    /// </summary>
+    /// <param name="n">Non-negative integer</param>
+    /// <returns>Factorial</returns>
+    /// <exception cref="ArgumentException">When the input is negative</exception>
+    public static long CalculateFactorial(int n)
+    {
+        if (n < 0)
+        {
+            throw new ArgumentException("Input must be a non-negative integer");
+        }
+        if (n == 0)
+        {
+            return 1;
+        }
+
+        return n * CalculateFactorial(n - 1);
+
+        // Alternate solution using LINQ:
+        // return Enumerable.Range(1, n).Aggregate(1L, (acc, x) => acc * x);
+    }
 }
